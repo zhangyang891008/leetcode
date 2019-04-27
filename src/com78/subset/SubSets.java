@@ -1,5 +1,6 @@
 package com78.subset;
 
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,25 +24,27 @@ public class SubSets {
 		List<List<Integer>> retList = new ArrayList<List<Integer>>();
 
 		for (int size = 0; size < nums.length+1; size++) {
-			genList(nums, size, new ArrayList(), retList, 0);
+			genList(nums, size, new LinkedList<Integer>(), retList, 0);
 		}
 		return retList;
 	}
+ 
 
-	private static void genList(int[] nums, int size, ArrayList arrayList, List<List<Integer>> retList, int start) {
-		if (arrayList.size() == size) {
-			retList.add(arrayList);
+	private static void genList(int[] nums, int size, LinkedList linkedList, List<List<Integer>> retList, int start) {
+		if (linkedList.size() == size) {
+			retList.add(new LinkedList<Integer>(linkedList));
+			return;
 		}
 
-		for (int i = start; i < nums.length + arrayList.size() - size+1 &&i<nums.length; i++) {
-			ArrayList<Integer> temp = new ArrayList<Integer>(arrayList);
-			temp.add(nums[i]);
-			genList(nums, size, temp, retList, start+1);
+		for (int i = start; i < (nums.length + linkedList.size() - size+1) &&i<nums.length; i++) {
+			linkedList.add(nums[i]);
+			genList(nums, size, linkedList, retList, i+1);
+			linkedList.removeLast(); //如：（1,2）遍历完以后要继续遍历下一个（1,4）。所以需要将最后一个值回退
 		}
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 1,3};
+		int arr[] = { 1,2,4,3};
 		List<List<Integer>> retList = SubSets.subsets(arr);
 		System.out.println("test");
 	}
