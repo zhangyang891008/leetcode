@@ -1,7 +1,4 @@
 package com75.sortColors;
-
-import com.sun.org.apache.bcel.internal.generic.SWAP;
-
 /**
  * 给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
 
@@ -23,33 +20,37 @@ import com.sun.org.apache.bcel.internal.generic.SWAP;
  * @author zy
  *
  */
-
-//plan two
-public class SortColors {
+public class SortColors2 {
 	public static void sortColors(int[] nums) {
-		int small = -1;
-		int middle = 0;
-		int large = nums.length -1;
-		while(middle<=large) {
-			if(nums[middle]==1) {
-				middle ++;
-			}else if(nums[middle]<1) {
-				swap(nums,++small,middle++);
-			}else {
-				swap(nums, middle, large--);
+        int sizeOfColors[] = {0,0,0};
+        for(int i = 0;i<nums.length;i++) {
+        	switch (nums[i]) {
+			case 0:
+				sizeOfColors[0] = sizeOfColors[0]+1;
+				break;
+			case 1:
+				sizeOfColors[1] = sizeOfColors[1]+1;
+				break;
+			case 2:
+				sizeOfColors[2] = sizeOfColors[2]+1;
+				break;
 			}
-		}
+        }
+        int pos;
+        for(pos = 0;pos<sizeOfColors[0];pos++) {
+        	nums[pos] = 0;
+        }
+        for(;pos<sizeOfColors[0]+sizeOfColors[1];pos++) {
+        	nums[pos] = 1;
+        }
+        for(;pos<nums.length;pos++) {
+        	nums[pos] = 2;
+        }
         System.out.println("finish");
     }
 	
-	private static void swap(int[] nums, int first, int second) {
-		int temp = nums[first];
-		nums[first] = nums[second];
-		nums[second] = temp;
-	}
-
 	public static void main(String[] args) {
-		int arr[] = {1,1,1,1,1,1};
+		int arr[] = {0,0,2,1,1,0};
 		sortColors(arr);
 	}
 }
