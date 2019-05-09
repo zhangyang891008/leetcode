@@ -2,22 +2,22 @@ package com64.minPathSum;
 
 import java.util.ArrayList;
 import java.util.List;
-/**64. ×îĞ¡Â·¾¶ºÍ
- * ¸ø¶¨Ò»¸ö°üº¬·Ç¸ºÕûÊıµÄ m x n Íø¸ñ£¬ÇëÕÒ³öÒ»Ìõ´Ó×óÉÏ½Çµ½ÓÒÏÂ½ÇµÄÂ·¾¶£¬Ê¹µÃÂ·¾¶ÉÏµÄÊı×Ö×ÜºÍÎª×îĞ¡¡£
+/**64. æœ€å°è·¯å¾„å’Œ
+ * ç»™å®šä¸€ä¸ªåŒ…å«éè´Ÿæ•´æ•°çš„ m x n ç½‘æ ¼ï¼Œè¯·æ‰¾å‡ºä¸€æ¡ä»å·¦ä¸Šè§’åˆ°å³ä¸‹è§’çš„è·¯å¾„ï¼Œä½¿å¾—è·¯å¾„ä¸Šçš„æ•°å­—æ€»å’Œä¸ºæœ€å°ã€‚
 
-ËµÃ÷£ºÃ¿´ÎÖ»ÄÜÏòÏÂ»òÕßÏòÓÒÒÆ¶¯Ò»²½¡£
+è¯´æ˜ï¼šæ¯æ¬¡åªèƒ½å‘ä¸‹æˆ–è€…å‘å³ç§»åŠ¨ä¸€æ­¥ã€‚
 
-Ê¾Àı:
+ç¤ºä¾‹:
 
-ÊäÈë:
+è¾“å…¥:
 [
   [1,3,1],
   [1,5,1],
   [4,2,1]
 ]
-Êä³ö: 7
-½âÊÍ: ÒòÎªÂ·¾¶ 1¡ú3¡ú1¡ú1¡ú1 µÄ×ÜºÍ×îĞ¡¡£
- * @author Administrator
+è¾“å‡º: 7
+è§£é‡Š: å› ä¸ºè·¯å¾„ 1â†’3â†’1â†’1â†’1 çš„æ€»å’Œæœ€å°ã€‚
+ * @author zhangyang891008
  *
  */
 public class MinPathSum {
@@ -34,7 +34,7 @@ public class MinPathSum {
 	
 	private static int path(int[][] grid, int currX, int currY, int currSum, int minPathValue ) {
 		if(currX == grid.length-1 && currY == grid[0].length-1) {
-			//µ½´ïÖÕµã
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½
 			int end =  grid[currX][currY];
 			minPathValue = (currSum + end) < minPathValue? (currSum + end):minPathValue;
 			return minPathValue;
