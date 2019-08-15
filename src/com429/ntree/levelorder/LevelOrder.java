@@ -8,7 +8,6 @@ import java.util.Queue;
 /**
  * 429. N叉树的层序遍历
  * 给定一个 N 叉树，返回其节点值的层序遍历。 (即从左到右，逐层遍历)。
-
 例如，给定一个 3叉树 :
            1
       3    2   4
@@ -20,7 +19,6 @@ import java.util.Queue;
      [3,2,4],
      [5,6]
 ]
- 
 
 说明:
 
@@ -105,6 +103,4 @@ class Node {
         val = _val;
         children = _children;
     }
-    
-    
 };
